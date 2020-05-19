@@ -3,9 +3,13 @@
 namespace OptimistDigital\NovaPageManager\Models;
 
 use OptimistDigital\NovaPageManager\NovaPageManager;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Page extends TemplateModel
+class Page extends TemplateModel implements HasMedia
 {
+    use InteractsWithMedia;
+    
     protected $appends = [
         'path'
     ];
