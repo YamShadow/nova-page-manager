@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Heading;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Textarea;
+use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Panel;
 use OptimistDigital\NovaLocaleField\LocaleField;
@@ -109,7 +111,14 @@ class Page extends TemplateResource
         return [
             Text::make('SEO Title', 'seo_title')->hideFromIndex()->hideWhenCreating(),
             Text::make('SEO Description', 'seo_description')->hideFromIndex()->hideWhenCreating(),
-            Image::make('SEO Image', 'seo_image')->hideFromIndex()->hideWhenCreating()
+            Textarea::make('SEO Keywords', 'seo_keywords')->hideFromIndex()->hideWhenCreating(),
+            Select::make('SEO Follow', 'seo_follow')->options([
+                'index, follow' => 'Index and follow',
+                'noindex, follow' => 'No index and follow',
+                'index, nofollow' => 'Index and no follow',
+                'noindex, nofollow' => 'No index and no follow',
+            ])->displayUsingLabels()->hideFromIndex()->hideWhenCreating(),
+            Image::make('SEO Image', 'seo_image')->hideFromIndex()->hideWhenCreating()->help('Best size is 1200px*630px')
         ];
     }
 

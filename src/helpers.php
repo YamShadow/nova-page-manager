@@ -167,6 +167,8 @@ if (!function_exists('nova_format_page')) {
                 'title' => $page->seo_title,
                 'description' => $page->seo_description,
                 'image' => $page->seo_image,
+                'keywords' => $page->seo_keywords,
+                'follow' => $page->seo_follow,
             ];
         }
 
